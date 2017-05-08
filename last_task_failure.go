@@ -17,11 +17,11 @@ package marathon
 
 // LastTaskFailure provides details on the last error experienced by an application
 type LastTaskFailure struct {
-	AppID     string `json:"appId,omitempty"`
-	Host      string `json:"host,omitempty"`
-	Message   string `json:"message,omitempty"`
-	State     string `json:"state,omitempty"`
-	TaskID    string `json:"taskId,omitempty"`
-	Timestamp string `json:"timestamp,omitempty"`
-	Version   string `json:"version,omitempty"`
+	AppID     string `json:"appId,omitempty" bson:"appId,omitempty"`
+	Host      string `json:"host,omitempty" bson:"host,omitempty"`
+	Message   string `json:"message,omitempty" bson:"message,omitempty"`
+	State     string `json:"state,omitempty" bson:"state,omitempty"`
+	TaskID    string `json:"taskId,omitempty" bson:"taskId,omitempty"`
+	Timestamp string `json:"timestamp,omitempty" bson:"timestamp,omitempty"`
+	Version   string `json:"version,omitempty" bson:"version,omitempty"`
 }

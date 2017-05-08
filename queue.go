@@ -22,20 +22,20 @@ import (
 
 // Queue is the definition of marathon queue
 type Queue struct {
-	Items []Item `json:"queue"`
+	Items []Item `json:"queue" bson:"queue"`
 }
 
 // Item is the definition of element in the queue
 type Item struct {
-	Count       int         `json:"count"`
-	Delay       Delay       `json:"delay"`
-	Application Application `json:"app"`
+	Count       int         `json:"count" bson:"count"`
+	Delay       Delay       `json:"delay" bson:"delay"`
+	Application Application `json:"app" bson:"app"`
 }
 
 // Delay cotains the application postpone infomation
 type Delay struct {
-	Overdue         bool `json:"overdue"`
-	TimeLeftSeconds int  `json:"timeLeftSeconds"`
+	Overdue         bool `json:"overdue" bson:"overdue"`
+	TimeLeftSeconds int  `json:"timeLeftSeconds" bson:"timeLeftSeconds"`
 }
 
 // Queue retrieves content of the marathon launch queue

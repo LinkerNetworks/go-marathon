@@ -18,8 +18,8 @@ package marathon
 
 // UpgradeStrategy is the upgrade strategy applied to an application.
 type UpgradeStrategy struct {
-	MinimumHealthCapacity *float64 `json:"minimumHealthCapacity,omitempty"`
-	MaximumOverCapacity   *float64 `json:"maximumOverCapacity,omitempty"`
+	MinimumHealthCapacity *float64 `json:"minimumHealthCapacity,omitempty" bson:"minimumHealthCapacity,omitempty"`
+	MaximumOverCapacity   *float64 `json:"maximumOverCapacity,omitempty" bson:"maximumOverCapacity,omitempty"`
 }
 
 // SetMinimumHealthCapacity sets the minimum health capacity.

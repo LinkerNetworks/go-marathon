@@ -24,45 +24,45 @@ import (
 
 // Deployment is a marathon deployment definition
 type Deployment struct {
-	ID             string              `json:"id"`
-	Version        string              `json:"version"`
-	CurrentStep    int                 `json:"currentStep"`
-	TotalSteps     int                 `json:"totalSteps"`
-	AffectedApps   []string            `json:"affectedApps"`
-	Steps          [][]*DeploymentStep `json:"-"`
-	XXStepsRaw     json.RawMessage     `json:"steps"` // Holds raw steps JSON to unmarshal later
-	CurrentActions []*DeploymentStep   `json:"currentActions"`
+	ID             string              `json:"id" bson:"id"`
+	Version        string              `json:"version" bson:"version"`
+	CurrentStep    int                 `json:"currentStep" bson:"currentStep"`
+	TotalSteps     int                 `json:"totalSteps" bson:"totalSteps"`
+	AffectedApps   []string            `json:"affectedApps" bson:"affectedApps"`
+	Steps          [][]*DeploymentStep `json:"-" bson:"-"`
+	XXStepsRaw     json.RawMessage     `json:"steps" bson:"steps"` // Holds raw steps JSON to unmarshal later
+	CurrentActions []*DeploymentStep   `json:"currentActions" bson:"currentActions"`
 }
 
 // DeploymentID is the identifier for a application deployment
 type DeploymentID struct {
-	DeploymentID string `json:"deploymentId"`
-	Version      string `json:"version"`
+	DeploymentID string `json:"deploymentId" bson:"deploymentId"`
+	Version      string `json:"version" bson:"version"`
 }
 
 // DeploymentStep is a step in the application deployment plan
 type DeploymentStep struct {
-	Action                string                  `json:"action"`
-	App                   string                  `json:"app"`
-	ReadinessCheckResults *[]ReadinessCheckResult `json:"readinessCheckResults,omitempty"`
+	Action                string                  `json:"action" bson:"action"`
+	App                   string                  `json:"app" bson:"app"`
+	ReadinessCheckResults *[]ReadinessCheckResult `json:"readinessCheckResults,omitempty" bson:"readinessCheckResults,omitempty"`
 }
 
 // StepActions is a series of deployment steps
 type StepActions struct {
 	Actions []struct {
-		Action string `json:"action"` // 1.1.2 and after
-		Type   string `json:"type"`   // 1.1.1 and before
-		App    string `json:"app"`
+		Action string `json:"action" bson:"action"` // 1.1.2 and after
+		Type   string `json:"type" bson:"type"`     // 1.1.1 and before
+		App    string `json:"app" bson:"app"`
 	}
 }
 
 // DeploymentPlan is a collection of steps for application deployment
 type DeploymentPlan struct {
-	ID       string         `json:"id"`
-	Version  string         `json:"version"`
-	Original *Group         `json:"original"`
-	Target   *Group         `json:"target"`
-	Steps    []*StepActions `json:"steps"`
+	ID       string         `json:"id" bson:"id"`
+	Version  string         `json:"version" bson:"version"`
+	Original *Group         `json:"original" bson:"original"`
+	Target   *Group         `json:"target" bson:"target"`
+	Steps    []*StepActions `json:"steps" bson:"steps"`
 }
 
 // Deployments retrieves a list of current deployments

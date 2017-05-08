@@ -18,16 +18,16 @@ package marathon
 
 // HealthCheck is the definition for an application health check
 type HealthCheck struct {
-	Command                *Command `json:"command,omitempty"`
-	PortIndex              *int     `json:"portIndex,omitempty"`
-	Port                   *int     `json:"port,omitempty"`
-	Path                   *string  `json:"path,omitempty"`
-	MaxConsecutiveFailures *int     `json:"maxConsecutiveFailures,omitempty"`
-	Protocol               string   `json:"protocol,omitempty"`
-	GracePeriodSeconds     int      `json:"gracePeriodSeconds,omitempty"`
-	IntervalSeconds        int      `json:"intervalSeconds,omitempty"`
-	TimeoutSeconds         int      `json:"timeoutSeconds,omitempty"`
-	IgnoreHTTP1xx          *bool    `json:"ignoreHttp1xx,ommitempty"`
+	Command                *Command `json:"command,omitempty" bson:"command,omitempty"`
+	PortIndex              *int     `json:"portIndex,omitempty" bson:"portIndex,omitempty"`
+	Port                   *int     `json:"port,omitempty" bson:"port,omitempty"`
+	Path                   *string  `json:"path,omitempty" bson:"path,omitempty"`
+	MaxConsecutiveFailures *int     `json:"maxConsecutiveFailures,omitempty" bson:"maxConsecutiveFailures,omitempty"`
+	Protocol               string   `json:"protocol,omitempty" bson:"protocol,omitempty"`
+	GracePeriodSeconds     int      `json:"gracePeriodSeconds,omitempty" bson:"gracePeriodSeconds,omitempty"`
+	IntervalSeconds        int      `json:"intervalSeconds,omitempty" bson:"intervalSeconds,omitempty"`
+	TimeoutSeconds         int      `json:"timeoutSeconds,omitempty" bson:"timeoutSeconds,omitempty"`
+	IgnoreHTTP1xx          *bool    `json:"ignoreHttp1xx,ommitempty" bson:"ignoreHttp1xx,ommitempty"`
 }
 
 // SetCommand sets the given command on the health check.
@@ -85,16 +85,16 @@ func NewDefaultHealthCheck() *HealthCheck {
 
 // HealthCheckResult is the health check result
 type HealthCheckResult struct {
-	Alive               bool   `json:"alive"`
-	ConsecutiveFailures int    `json:"consecutiveFailures"`
-	FirstSuccess        string `json:"firstSuccess"`
-	LastFailure         string `json:"lastFailure"`
-	LastFailureCause    string `json:"lastFailureCause"`
-	LastSuccess         string `json:"lastSuccess"`
-	TaskID              string `json:"taskId"`
+	Alive               bool   `json:"alive" bson:"alive"`
+	ConsecutiveFailures int    `json:"consecutiveFailures" bson:"consecutiveFailures"`
+	FirstSuccess        string `json:"firstSuccess" bson:"firstSuccess"`
+	LastFailure         string `json:"lastFailure" bson:"lastFailure"`
+	LastFailureCause    string `json:"lastFailureCause" bson:"lastFailureCause"`
+	LastSuccess         string `json:"lastSuccess" bson:"lastSuccess"`
+	TaskID              string `json:"taskId" bson:"taskId"`
 }
 
 // Command is the command health check type
 type Command struct {
-	Value string `json:"value"`
+	Value string `json:"value" bson:"value"`
 }

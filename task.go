@@ -23,29 +23,29 @@ import (
 
 // Tasks is a collection of marathon tasks
 type Tasks struct {
-	Tasks []Task `json:"tasks"`
+	Tasks []Task `json:"tasks" bson:"tasks"`
 }
 
 // Task is the definition for a marathon task
 type Task struct {
-	ID                 string               `json:"id"`
-	AppID              string               `json:"appId"`
-	Host               string               `json:"host"`
-	HealthCheckResults []*HealthCheckResult `json:"healthCheckResults"`
-	Ports              []int                `json:"ports"`
-	ServicePorts       []int                `json:"servicePorts"`
-	SlaveID            string               `json:"slaveId"`
-	StagedAt           string               `json:"stagedAt"`
-	StartedAt          string               `json:"startedAt"`
-	State              string               `json:"state"`
-	IPAddresses        []*IPAddress         `json:"ipAddresses"`
-	Version            string               `json:"version"`
+	ID                 string               `json:"id" bson:"id"`
+	AppID              string               `json:"appId" bson:"appId"`
+	Host               string               `json:"host" bson:"host"`
+	HealthCheckResults []*HealthCheckResult `json:"healthCheckResults" bson:"healthCheckResults"`
+	Ports              []int                `json:"ports" bson:"ports"`
+	ServicePorts       []int                `json:"servicePorts" bson:"servicePorts"`
+	SlaveID            string               `json:"slaveId" bson:"slaveId"`
+	StagedAt           string               `json:"stagedAt" bson:"stagedAt"`
+	StartedAt          string               `json:"startedAt" bson:"startedAt"`
+	State              string               `json:"state" bson:"state"`
+	IPAddresses        []*IPAddress         `json:"ipAddresses" bson:"ipAddresses"`
+	Version            string               `json:"version" bson:"version"`
 }
 
 // IPAddress represents a task's IP address and protocol.
 type IPAddress struct {
-	IPAddress string `json:"ipAddress"`
-	Protocol  string `json:"protocol"`
+	IPAddress string `json:"ipAddress" bson:"ipAddress"`
+	Protocol  string `json:"protocol" bson:"protocol"`
 }
 
 // AllTasksOpts contains a payload for AllTasks method

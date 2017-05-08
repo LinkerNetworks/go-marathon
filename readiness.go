@@ -20,14 +20,14 @@ import "time"
 
 // ReadinessCheck represents a readiness check.
 type ReadinessCheck struct {
-	Name                    *string `json:"name,omitempty"`
-	Protocol                string  `json:"protocol,omitempty"`
-	Path                    string  `json:"path,omitempty"`
-	PortName                string  `json:"portName,omitempty"`
-	IntervalSeconds         int     `json:"intervalSeconds,omitempty"`
-	TimeoutSeconds          int     `json:"timeoutSeconds,omitempty"`
-	HTTPStatusCodesForReady *[]int  `json:"httpStatusCodesForReady,omitempty"`
-	PreserveLastResponse    *bool   `json:"preserveLastResponse,omitempty"`
+	Name                    *string `json:"name,omitempty" bson:"name,omitempty"`
+	Protocol                string  `json:"protocol,omitempty" bson:"protocol,omitempty"`
+	Path                    string  `json:"path,omitempty" bson:"path,omitempty"`
+	PortName                string  `json:"portName,omitempty" bson:"portName,omitempty"`
+	IntervalSeconds         int     `json:"intervalSeconds,omitempty" bson:"intervalSeconds,omitempty"`
+	TimeoutSeconds          int     `json:"timeoutSeconds,omitempty" bson:"timeoutSeconds,omitempty"`
+	HTTPStatusCodesForReady *[]int  `json:"httpStatusCodesForReady,omitempty" bson:"httpStatusCodesForReady,omitempty"`
+	PreserveLastResponse    *bool   `json:"preserveLastResponse,omitempty" bson:"preserveLastResponse,omitempty"`
 }
 
 // SetName sets the name on the readiness check.
@@ -92,8 +92,8 @@ type ReadinessLastResponse struct {
 
 // ReadinessCheckResult is the result of a readiness check.
 type ReadinessCheckResult struct {
-	Name         string                `json:"name"`
-	TaskID       string                `json:"taskId"`
-	Ready        bool                  `json:"ready"`
-	LastResponse ReadinessLastResponse `json:"lastResponse,omitempty"`
+	Name         string                `json:"name" bson:"name"`
+	TaskID       string                `json:"taskId" bson:"taskId"`
+	Ready        bool                  `json:"ready" bson:"ready"`
+	LastResponse ReadinessLastResponse `json:"lastResponse,omitempty" bson:"lastResponse,omitempty"`
 }

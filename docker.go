@@ -23,50 +23,50 @@ import (
 
 // Container is the definition for a container type in marathon
 type Container struct {
-	Type    string    `json:"type,omitempty"`
-	Docker  *Docker   `json:"docker,omitempty"`
-	Volumes *[]Volume `json:"volumes,omitempty"`
+	Type    string    `json:"type,omitempty" bson:"type,omitempty"`
+	Docker  *Docker   `json:"docker,omitempty" bson:"docker,omitempty"`
+	Volumes *[]Volume `json:"volumes,omitempty" bson:"volumes,omitempty"`
 }
 
 // PortMapping is the portmapping structure between container and mesos
 type PortMapping struct {
-	ContainerPort int                `json:"containerPort,omitempty"`
-	HostPort      int                `json:"hostPort"`
-	Labels        *map[string]string `json:"labels,omitempty"`
-	Name          string             `json:"name,omitempty"`
-	ServicePort   int                `json:"servicePort,omitempty"`
-	Protocol      string             `json:"protocol,omitempty"`
+	ContainerPort int                `json:"containerPort,omitempty" bson:"containerPort,omitempty"`
+	HostPort      int                `json:"hostPort" bson:"hostPort"`
+	Labels        *map[string]string `json:"labels,omitempty" bson:"labels,omitempty"`
+	Name          string             `json:"name,omitempty" bson:"name,omitempty"`
+	ServicePort   int                `json:"servicePort,omitempty" bson:"servicePort,omitempty"`
+	Protocol      string             `json:"protocol,omitempty" bson:"protocol,omitempty"`
 }
 
 // Parameters is the parameters to pass to the docker client when creating the container
 type Parameters struct {
-	Key   string `json:"key,omitempty"`
-	Value string `json:"value,omitempty"`
+	Key   string `json:"key,omitempty" bson:"key,omitempty"`
+	Value string `json:"value,omitempty" bson:"value,omitempty"`
 }
 
 // Volume is the docker volume details associated to the container
 type Volume struct {
-	ContainerPath string          `json:"containerPath,omitempty"`
-	HostPath      string          `json:"hostPath,omitempty"`
-	External      *ExternalVolume `json:"external,omitempty"`
-	Mode          string          `json:"mode,omitempty"`
+	ContainerPath string          `json:"containerPath,omitempty" bson:"containerPath,omitempty"`
+	HostPath      string          `json:"hostPath,omitempty" bson:"hostPath,omitempty"`
+	External      *ExternalVolume `json:"external,omitempty" bson:"external,omitempty"`
+	Mode          string          `json:"mode,omitempty" bson:"mode,omitempty"`
 }
 
 // ExternalVolume is an external volume definition
 type ExternalVolume struct {
-	Name     string             `json:"name,omitempty"`
-	Provider string             `json:"provider,omitempty"`
-	Options  *map[string]string `json:"options,omitempty"`
+	Name     string             `json:"name,omitempty" bson:"name,omitempty"`
+	Provider string             `json:"provider,omitempty" bson:"provider,omitempty"`
+	Options  *map[string]string `json:"options,omitempty" bson:"options,omitempty"`
 }
 
 // Docker is the docker definition from a marathon application
 type Docker struct {
-	ForcePullImage *bool          `json:"forcePullImage,omitempty"`
-	Image          string         `json:"image,omitempty"`
-	Network        string         `json:"network,omitempty"`
-	Parameters     *[]Parameters  `json:"parameters,omitempty"`
-	PortMappings   *[]PortMapping `json:"portMappings,omitempty"`
-	Privileged     *bool          `json:"privileged,omitempty"`
+	ForcePullImage *bool          `json:"forcePullImage,omitempty" bson:"forcePullImage,omitempty"`
+	Image          string         `json:"image,omitempty" bson:"image,omitempty"`
+	Network        string         `json:"network,omitempty" bson:"network,omitempty"`
+	Parameters     *[]Parameters  `json:"parameters,omitempty" bson:"parameters,omitempty"`
+	PortMappings   *[]PortMapping `json:"portMappings,omitempty" bson:"portMappings,omitempty"`
+	Privileged     *bool          `json:"privileged,omitempty" bson:"privileged,omitempty"`
 }
 
 // Volume attachs a volume to the container

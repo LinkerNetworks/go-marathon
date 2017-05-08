@@ -31,96 +31,96 @@ var (
 
 // Applications is a collection of applications
 type Applications struct {
-	Apps []Application `json:"apps"`
+	Apps []Application `json:"apps" bson:"apps"`
 }
 
 // IPAddressPerTask is used by IP-per-task functionality https://mesosphere.github.io/marathon/docs/ip-per-task.html
 type IPAddressPerTask struct {
-	Groups      *[]string          `json:"groups,omitempty"`
-	Labels      *map[string]string `json:"labels,omitempty"`
-	Discovery   *Discovery         `json:"discovery,omitempty"`
-	NetworkName string             `json:"networkName,omitempty"`
+	Groups      *[]string          `json:"groups,omitempty" bson:"groups,omitempty"`
+	Labels      *map[string]string `json:"labels,omitempty" bson:"labels,omitempty"`
+	Discovery   *Discovery         `json:"discovery,omitempty" bson:"discovery,omitempty"`
+	NetworkName string             `json:"networkName,omitempty" bson:"networkName,omitempty"`
 }
 
 // Discovery provides info about ports expose by IP-per-task functionality
 type Discovery struct {
-	Ports *[]Port `json:"ports,omitempty"`
+	Ports *[]Port `json:"ports,omitempty" bson:"ports,omitempty"`
 }
 
 // Port provides info about ports used by IP-per-task
 type Port struct {
-	Number   int    `json:"number,omitempty"`
-	Name     string `json:"name,omitempty"`
-	Protocol string `json:"protocol,omitempty"`
+	Number   int    `json:"number,omitempty" bson:"number,omitempty"`
+	Name     string `json:"name,omitempty" bson:"name,omitempty"`
+	Protocol string `json:"protocol,omitempty" bson:"protocol,omitempty"`
 }
 
 // Application is the definition for an application in marathon
 type Application struct {
-	ID                         string              `json:"id,omitempty"`
-	Cmd                        *string             `json:"cmd,omitempty"`
-	Args                       *[]string           `json:"args,omitempty"`
-	Constraints                *[][]string         `json:"constraints,omitempty"`
-	Container                  *Container          `json:"container,omitempty"`
-	CPUs                       float64             `json:"cpus,omitempty"`
-	GPUs                       *float64            `json:"gpus,omitempty"`
-	Disk                       *float64            `json:"disk,omitempty"`
-	Env                        *map[string]string  `json:"env,omitempty"`
-	Executor                   *string             `json:"executor,omitempty"`
-	HealthChecks               *[]HealthCheck      `json:"healthChecks,omitempty"`
-	ReadinessChecks            *[]ReadinessCheck   `json:"readinessChecks,omitempty"`
-	Instances                  *int                `json:"instances,omitempty"`
-	Mem                        *float64            `json:"mem,omitempty"`
-	Tasks                      []*Task             `json:"tasks,omitempty"`
-	Ports                      []int               `json:"ports"`
-	PortDefinitions            *[]PortDefinition   `json:"portDefinitions,omitempty"`
-	RequirePorts               *bool               `json:"requirePorts,omitempty"`
-	BackoffSeconds             *float64            `json:"backoffSeconds,omitempty"`
-	BackoffFactor              *float64            `json:"backoffFactor,omitempty"`
-	MaxLaunchDelaySeconds      *float64            `json:"maxLaunchDelaySeconds,omitempty"`
-	TaskKillGracePeriodSeconds *float64            `json:"taskKillGracePeriodSeconds,omitempty"`
-	Deployments                []map[string]string `json:"deployments,omitempty"`
+	ID                         string              `json:"id,omitempty" bson:"id,omitempty"`
+	Cmd                        *string             `json:"cmd,omitempty" bson:"cmd,omitempty"`
+	Args                       *[]string           `json:"args,omitempty" bson:"args,omitempty"`
+	Constraints                *[][]string         `json:"constraints,omitempty" bson:"constraints,omitempty"`
+	Container                  *Container          `json:"container,omitempty" bson:"container,omitempty"`
+	CPUs                       float64             `json:"cpus,omitempty" bson:"cpus,omitempty"`
+	GPUs                       *float64            `json:"gpus,omitempty" bson:"gpus,omitempty"`
+	Disk                       *float64            `json:"disk,omitempty" bson:"disk,omitempty"`
+	Env                        *map[string]string  `json:"env,omitempty" bson:"env,omitempty"`
+	Executor                   *string             `json:"executor,omitempty" bson:"executor,omitempty"`
+	HealthChecks               *[]HealthCheck      `json:"healthChecks,omitempty" bson:"healthChecks,omitempty"`
+	ReadinessChecks            *[]ReadinessCheck   `json:"readinessChecks,omitempty" bson:"readinessChecks,omitempty"`
+	Instances                  *int                `json:"instances,omitempty" bson:"instances,omitempty"`
+	Mem                        *float64            `json:"mem,omitempty" bson:"mem,omitempty"`
+	Tasks                      []*Task             `json:"tasks,omitempty" bson:"tasks,omitempty"`
+	Ports                      []int               `json:"ports" bson:"ports"`
+	PortDefinitions            *[]PortDefinition   `json:"portDefinitions,omitempty" bson:"portDefinitions,omitempty"`
+	RequirePorts               *bool               `json:"requirePorts,omitempty" bson:"requirePorts,omitempty"`
+	BackoffSeconds             *float64            `json:"backoffSeconds,omitempty" bson:"backoffSeconds,omitempty"`
+	BackoffFactor              *float64            `json:"backoffFactor,omitempty" bson:"backoffFactor,omitempty"`
+	MaxLaunchDelaySeconds      *float64            `json:"maxLaunchDelaySeconds,omitempty" bson:"maxLaunchDelaySeconds,omitempty"`
+	TaskKillGracePeriodSeconds *float64            `json:"taskKillGracePeriodSeconds,omitempty" bson:"taskKillGracePeriodSeconds,omitempty"`
+	Deployments                []map[string]string `json:"deployments,omitempty" bson:"deployments,omitempty"`
 	// Available when embedding readiness information through query parameter.
-	ReadinessCheckResults *[]ReadinessCheckResult `json:"readinessCheckResults,omitempty"`
-	Dependencies          []string                `json:"dependencies"`
-	TasksRunning          int                     `json:"tasksRunning,omitempty"`
-	TasksStaged           int                     `json:"tasksStaged,omitempty"`
-	TasksHealthy          int                     `json:"tasksHealthy,omitempty"`
-	TasksUnhealthy        int                     `json:"tasksUnhealthy,omitempty"`
-	TaskStats             map[string]TaskStats    `json:"taskStats,omitempty"`
-	User                  string                  `json:"user,omitempty"`
-	UpgradeStrategy       *UpgradeStrategy        `json:"upgradeStrategy,omitempty"`
-	Uris                  *[]string               `json:"uris,omitempty"`
-	Version               string                  `json:"version,omitempty"`
-	VersionInfo           *VersionInfo            `json:"versionInfo,omitempty"`
-	Labels                *map[string]string      `json:"labels,omitempty"`
-	AcceptedResourceRoles []string                `json:"acceptedResourceRoles,omitempty"`
-	LastTaskFailure       *LastTaskFailure        `json:"lastTaskFailure,omitempty"`
-	Fetch                 *[]Fetch                `json:"fetch,omitempty"`
-	IPAddressPerTask      *IPAddressPerTask       `json:"ipAddress,omitempty"`
+	ReadinessCheckResults *[]ReadinessCheckResult `json:"readinessCheckResults,omitempty" bson:"readinessCheckResults,omitempty"`
+	Dependencies          []string                `json:"dependencies" bson:"dependencies"`
+	TasksRunning          int                     `json:"tasksRunning,omitempty" bson:"tasksRunning,omitempty"`
+	TasksStaged           int                     `json:"tasksStaged,omitempty" bson:"tasksStaged,omitempty"`
+	TasksHealthy          int                     `json:"tasksHealthy,omitempty" bson:"tasksHealthy,omitempty"`
+	TasksUnhealthy        int                     `json:"tasksUnhealthy,omitempty" bson:"tasksUnhealthy,omitempty"`
+	TaskStats             map[string]TaskStats    `json:"taskStats,omitempty" bson:"taskStats,omitempty"`
+	User                  string                  `json:"user,omitempty" bson:"user,omitempty"`
+	UpgradeStrategy       *UpgradeStrategy        `json:"upgradeStrategy,omitempty" bson:"upgradeStrategy,omitempty"`
+	Uris                  *[]string               `json:"uris,omitempty" bson:"uris,omitempty"`
+	Version               string                  `json:"version,omitempty" bson:"version,omitempty"`
+	VersionInfo           *VersionInfo            `json:"versionInfo,omitempty" bson:"versionInfo,omitempty"`
+	Labels                *map[string]string      `json:"labels,omitempty" bson:"labels,omitempty"`
+	AcceptedResourceRoles []string                `json:"acceptedResourceRoles,omitempty" bson:"acceptedResourceRoles,omitempty"`
+	LastTaskFailure       *LastTaskFailure        `json:"lastTaskFailure,omitempty" bson:"lastTaskFailure,omitempty"`
+	Fetch                 *[]Fetch                `json:"fetch,omitempty" bson:"fetch,omitempty"`
+	IPAddressPerTask      *IPAddressPerTask       `json:"ipAddress,omitempty" bson:"ipAddress,omitempty"`
 }
 
 // ApplicationVersions is a collection of application versions for a specific app in marathon
 type ApplicationVersions struct {
-	Versions []string `json:"versions"`
+	Versions []string `json:"versions" bson:"versions"`
 }
 
 // ApplicationVersion is the application version response from marathon
 type ApplicationVersion struct {
-	Version string `json:"version"`
+	Version string `json:"version" bson:"version"`
 }
 
 // VersionInfo is the application versioning details from marathon
 type VersionInfo struct {
-	LastScalingAt      string `json:"lastScalingAt,omitempty"`
-	LastConfigChangeAt string `json:"lastConfigChangeAt,omitempty"`
+	LastScalingAt      string `json:"lastScalingAt,omitempty" bson:"lastScalingAt,omitempty"`
+	LastConfigChangeAt string `json:"lastConfigChangeAt,omitempty" bson:"lastConfigChangeAt,omitempty"`
 }
 
 // Fetch will download URI before task starts
 type Fetch struct {
-	URI        string `json:"uri"`
-	Executable bool   `json:"executable"`
-	Extract    bool   `json:"extract"`
-	Cache      bool   `json:"cache"`
+	URI        string `json:"uri" bson:"uri"`
+	Executable bool   `json:"executable" bson:"executable"`
+	Extract    bool   `json:"extract" bson:"extract"`
+	Cache      bool   `json:"cache" bson:"cache"`
 }
 
 // GetAppOpts contains a payload for Application method
@@ -138,13 +138,13 @@ type DeleteAppOpts struct {
 
 // TaskStats is a container for Stats
 type TaskStats struct {
-	Stats Stats `json:"stats"`
+	Stats Stats `json:"stats" bson:"stats"`
 }
 
 // Stats is a collection of aggregate statistics about an application's tasks
 type Stats struct {
-	Counts   map[string]int     `json:"counts"`
-	LifeTime map[string]float64 `json:"lifeTime"`
+	Counts   map[string]int     `json:"counts" bson:"counts"`
+	LifeTime map[string]float64 `json:"lifeTime" bson:"lifeTime"`
 }
 
 // SetIPAddressPerTask defines that the application will have a IP address defines by a external agent.

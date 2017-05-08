@@ -20,10 +20,10 @@ package marathon
 // part of a resource. Port definitions are necessary when you are
 // using HOST networking and no port mappings are specified.
 type PortDefinition struct {
-	Port     *int               `json:"port,omitempty"`
-	Protocol string             `json:"protocol,omitempty"`
-	Name     string             `json:"name,omitempty"`
-	Labels   *map[string]string `json:"labels,omitempty"`
+	Port     *int               `json:"port,omitempty" bson:"port,omitempty"`
+	Protocol string             `json:"protocol,omitempty" bson:"protocol,omitempty"`
+	Name     string             `json:"name,omitempty" bson:"name,omitempty"`
+	Labels   *map[string]string `json:"labels,omitempty" bson:"labels,omitempty"`
 }
 
 // SetPort sets the given port for the PortDefinition

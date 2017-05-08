@@ -31,7 +31,7 @@ import (
 
 // Subscriptions is a collection to urls that marathon is implementing a callback on
 type Subscriptions struct {
-	CallbackURLs []string `json:"callbackUrls"`
+	CallbackURLs []string `json:"callbackUrls" bson:"callbackUrls"`
 }
 
 // Subscriptions retrieves a list of registered subscriptions

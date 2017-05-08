@@ -23,18 +23,18 @@ import (
 
 // Group is a marathon application group
 type Group struct {
-	ID           string         `json:"id"`
-	Apps         []*Application `json:"apps"`
-	Dependencies []string       `json:"dependencies"`
-	Groups       []*Group       `json:"groups"`
+	ID           string         `json:"id" bson:"id"`
+	Apps         []*Application `json:"apps" bson:"apps"`
+	Dependencies []string       `json:"dependencies" bson:"dependencies"`
+	Groups       []*Group       `json:"groups" bson:"groups"`
 }
 
 // Groups is a collection of marathon application groups
 type Groups struct {
-	ID           string         `json:"id"`
-	Apps         []*Application `json:"apps"`
-	Dependencies []string       `json:"dependencies"`
-	Groups       []*Group       `json:"groups"`
+	ID           string         `json:"id" bson:"id"`
+	Apps         []*Application `json:"apps" bson:"apps"`
+	Dependencies []string       `json:"dependencies" bson:"dependencies"`
+	Groups       []*Group       `json:"groups" bson:"groups"`
 }
 
 // GetGroupOpts contains a payload for Group and Groups method
